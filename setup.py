@@ -10,7 +10,8 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+# TODO: read from requirements.txt
+requirements = [ 'numpy', 'matplotlib' ]
 
 setup_requirements = ['pytest-runner', ]
 
@@ -34,7 +35,7 @@ setup(
     description="Generate antenna radiation pattern in polar format using python",
     entry_points={
         'console_scripts': [
-            'python_antenna_pattern=python_antenna_pattern.cli:main',
+            'pyap=python_antenna_pattern.cli:main',
         ],
     },
     install_requires=requirements,
