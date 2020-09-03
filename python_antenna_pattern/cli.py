@@ -19,49 +19,60 @@ class Pyap:
         self.arg_parser = ArgumentParser()
 
         self.arg_parser.add_argument(
-            '-v', '--verbose', action='store_true', dest='verbose', default=False,
-            help='generates all information [default: %default]'
+            '-v', '--verbose', action='store_true',
+            dest='verbose', default=False,
+            help='generates all informationself.arg_parser'
         )
         self.arg_parser.add_argument(
-            '-s', '--show-fig', action='store_true', dest='show_fig', default=False,
-            help='Show figure (will pause after each figure is generated) [default: %default]'
+            '-s', '--show-fig', action='store_true',
+            dest='show_fig', default=False,
+            help='Show figure (will pause after each figure is generated)self.arg_parser'
         )
         self.arg_parser.add_argument(
-            '-g', '--show-legend', action='store_true', dest='show_legend', default=False,
-            help='Show legend [default: %default]'
+            '-g', '--show-legend', action='store_true',
+            dest='show_legend', default=False,
+            help='Show legendself.arg_parser'
         )
         # TODO: deprecate file list approach, simply use input file directory
+        # self.arg_parser.add_argument(
+        #     '-l', '--file-list', action="store", type=str,
+        #     dest='file_list',
+        #     # default=config.DEFAULT_FILE_LIST,
+        #     help='Use specified file that lists the location of '
+        #          'the planet files'
+        # )
         self.arg_parser.add_argument(
-            '-l', '--file-list', action="store", type=str, dest='file_list',
-            # default=config.DEFAULT_FILE_LIST,
-            help='Use specified file that lists the location of '
-                 'the planet files [default: %default]'
+            type=str,
+            dest='input_target',
+            help='Use specified file to plot antenna pattern'
         )
         self.arg_parser.add_argument(
-            '-f', '--file', action='store', type=str, dest='filename', default=None,
-            help='Use specified file to plot antenna pattern [default: %default]'
-        )
-        self.arg_parser.add_argument(
-            '-r', '--rotation-offset', type=int, dest='rotation_offset', default=0,
-            help='Rotational offset when plotting the polar pattern [default: %default]'
+            '-f', '--file', action='store', type=str, dest='filename',
+            default=None,
+            help='Use specified file to plot antenna pattern'
         )
         self.arg_parser.add_argument(
             '-d', '--directory', type=str, dest='directory',
             default='python_antenna_pattern/data/test_dir',
-            help='Plot the files in the specified directory [default: %default]'
+            help='Plot the files in the specified directory'
+        )
+        self.arg_parser.add_argument(
+            '-r', '--rotation-offset', type=int, dest='rotation_offset',
+            default=0,
+            help='Rotational offset when plotting the polar pattern'
         )
         self.arg_parser.add_argument(
             '-F', '--filetype', choices=['eps', 'pdf'], dest='filetype', default='pdf',
-            help='file type of the output figure, either pdf or eps [default: %default]'
+            help='file type of the output figure, either pdf or eps'
         )
         self.arg_parser.add_argument(
             '--fontsize', type=int, dest='fontsize', default='7',
-            help='Font size in the legend and the title [default: %default]'
+            help='Font size in the legend and the title'
         )
         self.arg_parser.add_argument(
             '-n', '--file-name-prefix', type=str,
             dest='file_name_prefix', default='SCRN_',
-            help='prefix of the filename [default: %default]'
+            help='prefix of the filename'
         )
 
 
@@ -92,9 +103,8 @@ class Pyap:
         file_name_prefix=options.file_name_prefix
         file_format=options.filetype
         if options.directory is not None:
-            import os
-            path = '{}/{}/*.txt'.format(os.getcwd(), options.directory)
-            src_files = glob.glob(path)
+            # path = '{}/{}/*.txt'.format(os.getcwd(), options.directory)
+            src_files = glob.glob(options.directory)
             if len(src_files) == 0:
                 print('No files in directory {}'.format(path))
                 path = '{}/*.txt'.format(options.directory)
