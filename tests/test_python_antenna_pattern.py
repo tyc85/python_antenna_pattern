@@ -3,6 +3,8 @@
 """Tests for `python_antenna_pattern` package."""
 
 import pytest
+import subprocess as sp
+import shlex
 
 
 from python_antenna_pattern import python_antenna_pattern
@@ -22,3 +24,22 @@ def test_content(response):
     """Sample pytest test function with the pytest fixture as an argument."""
     # from bs4 import BeautifulSoup
     # assert 'GitHub' in BeautifulSoup(response.content).title.string
+
+def test_cli_help():
+    proc = sp.Popen(
+        shlex.split('pyap --help'),
+        stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE,
+        bufsize=-1
+    )
+    proc.communicate()
+    assert proc.returncode == 0
+
+def test_cli_convert_single_planet_file():
+    # TODO: make input file a fixture
+    proc = sp.Popen(
+        shlex.split('pyap python_antenna_pattern/data/B800A065-18-4E.pln'),
+        stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE,
+        bufsize=-1
+    )
+    proc.communicate()
+    assert proc.returncode == 0

@@ -48,17 +48,9 @@ class Pyap:
             default=False,
             help='Show legend'
         )
-        # TODO: deprecate file list approach, simply use input file directory
-        # self.arg_parser.add_argument(
-        #     '-l', '--file-list', action="store", type=str,
-        #     dest='file_list',
-        #     # default=config.DEFAULT_FILE_LIST,
-        #     help='Use specified file that lists the location of '
-        #          'the planet files'
-        # )
         self.arg_parser.add_argument(
             type=str,
-            dest='input_target',
+            dest='target',
             help=(
                 'Use specified file, list of files, or a directory containing '
                 'planet files to plot antenna pattern'
@@ -109,6 +101,7 @@ class Pyap:
     def wrapper(self, argv):
         # (options, args) = self.arg_parser.parse_args()
         args = self.arg_parser.parse_args()
+        print('args is {}'.format(args))
         self.plot_pattern(args)
 
 
@@ -134,6 +127,7 @@ class Pyap:
             print('Converting file {}'.format(options.target))
             src_files = [options.target, ]
         else:
+            print('Cannot find file or director {}'.format(options.target))
             sys.exit(os.EX_SOFTWARE)
 
 
@@ -173,16 +167,19 @@ class Pyap:
                 'PYAP currently does not support more than a pair of file',
                 file=sys.stderr
             )
-            raise
+            sys.exit(os.EX_SOFTWARE)
 
         if len(src_files) < 2:
             self.single_file_flag = True
 
         if len(band) > 1:
-            print('frequency band list: {}'.format(band), file=sys.stderr)
+            print('Frequency band list: {}'.format(band), file=sys.stderr)
             if band[0] != band[1]:
-                print('freq band not match: {}'.format(band), file=sys.stderr)
-                raise
+                print(
+                    'Frequency band not match: {}'.format(band),
+                    file=sys.stderr
+                )
+                sys.exit(os.EX_SOFTWARE)
 
         max_gain_db_slist = []
         rho = {}
