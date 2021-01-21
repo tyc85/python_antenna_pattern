@@ -5,6 +5,5 @@ import sys
 from python_antenna_pattern.cli import Pyap
 
 if __name__=='__main__':
-    #print(sys.argv)
     pyap = Pyap()
     pyap.wrapper(sys.argv)

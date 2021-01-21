@@ -1,25 +1,32 @@
 #!/usr/bin/env python
-import python_antenna_pattern.config as config
+import argparse
 import numpy as np
+import logging
 import matplotlib.pyplot as plt
 import os
+from optparse import OptionParser
 import glob
 import sys
-from python_antenna_pattern.core import AntennaPattern
-from python_antenna_pattern.core import read_name_list
-from optparse import OptionParser
-import argparse
-
-
 try:
-    import config
-except ImportError:
-    import python_antenna_pattern.config as config
+  import python_antenna_pattern.config as config
+  from python_antenna_pattern.core import AntennaPattern
+  from python_antenna_pattern.core import read_name_list
+except ModuleNotFoundError:
+  import config
+  from core import *
+  
+logger = logging.getLogger(__name__)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+# formatter = logging.Formatter('%(asctime)s - %(name)s - [%(levelname)s] %(message)s')
+formatter = logging.Formatter('[%(levelname)s] %(message)s')
+ch.setFormatter(formatter)
+logger.addHandler(ch)
 
 class Pyap:
     def __init__(self, file_list=''):
         self.single_file_flag = False
-        self.parser = OptionParser()
+        #self.parser = OptionParser()
         self.arg_parser = argparse.ArgumentParser(
             formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         )
@@ -101,7 +108,11 @@ class Pyap:
     def wrapper(self, argv):
         # (options, args) = self.arg_parser.parse_args()
         args = self.arg_parser.parse_args()
-        print('args is {}'.format(args))
+        if args.verbose is True:
+            logger.setLevel(logging.DEBUG)
+        else:
+            logger.setLevel(logging.INFO)
+        logger.debug('args is %s', args)
         self.plot_pattern(args)
 
 
