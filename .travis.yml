@@ -3,7 +3,7 @@ python:
 - 3.8
 - 3.7
 - 3.6
-- 3.5
+# - 3.5 # skip 3.5 for now
 install: pip install -U tox-travis
 script: tox
 deploy:
