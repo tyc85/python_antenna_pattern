@@ -27,7 +27,7 @@ def test_content(response):
 
 def test_cli_help():
     proc = sp.Popen(
-        shlex.split('pyap --help'),
+        shlex.split('./python_antenna_pattern/cli.py --help'),
         stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE,
         bufsize=-1
     )
@@ -36,8 +36,9 @@ def test_cli_help():
 
 def test_cli_convert_single_planet_file():
     # TODO: make input file a fixture
+    cmd = './python_antenna_pattern/cli.py -v python_antenna_pattern/data/B800A065-18-4E.pln'
     proc = sp.Popen(
-        shlex.split('pyap python_antenna_pattern/data/B800A065-18-4E.pln'),
+        shlex.split(cmd),
         stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE,
         bufsize=-1
     )
