@@ -9,10 +9,11 @@ script: tox
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
-  user: tyc85
+  user: "__token__"
   password:
     secure: f9AWZ70FEZt1Da8E3HMuTd4z7liDsd4FdZw+ILRrtijOqDz5G/KXe6WwLfQ0guqW5VGrj5elmS/PTDBJXeJjs6sREZnXiPUw/ynFL4mCDvl0Ti2viGA8ZSK/qBrAtmtHWXOxysex2t4dqdPwbl5sArsWVAvN/6omwBH0lKaiVALf9Ir1H4RXfSZbdGxxq0YluxbM40C0DzgVXeAxU3sBKVizJ/doDfyTtW59l6jsgsyO89WyJGyzAzsUNE1y0VRIK2Rtlp2Z2JVIPErZOmWHqlZ5s4lWwFWY9IZ5XZ7O/O/pjIhi67ohzqlXktc4OQysxsoIAt7GItU9fmTj75AE9ldXiktQ5OKuRDYEFDfKFbDG6xciTqExb+e0y0FUGIprx6+ABoV21PGgPITaMDv/ZkVYlP4YdRfPGad0RlT3CpBees/NWej29WzjiiAHmuv/YVNUgl98ikj+BTYDXzPjiQozZ6tiH0p4Ve4HvsiJBJ2ns/OyD3K/bFQs8Y5seKX/rvbhBXK9aFISc/gkCIOuJUp9L4KizxG+IWJYabV0S5ny70/BkOjH4wS6Ae654x3l3kntijuV8w9cFvdvd7VeC4/goSfumaoaAj4m2aZXXqni9KFGBSgm+jZyRBQcE0VtReB5E6goSzCj1GBcPatzWdD8rfh1eWI87vgDDP7Enqk=
   on:
+    branch: stable
     tags: true
     repo: tyc85/python_antenna_pattern
     python: 3.8

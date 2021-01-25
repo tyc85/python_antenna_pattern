@@ -2,6 +2,7 @@
 Usage
 =====
 
-To use python-antenna-pattern in a project::
+To see usage of python-antenna-pattern ::
 
-    import python_antenna_pattern
+    pyap -h
+

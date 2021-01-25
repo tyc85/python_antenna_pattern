@@ -49,6 +49,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/tyc85/python_antenna_pattern',
-    version='0.1.0',
+    version='0.0.1',
     zip_safe=False,
 )
