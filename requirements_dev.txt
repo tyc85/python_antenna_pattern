@@ -45,7 +45,7 @@ sphinxcontrib-serializinghtml==1.1.4
 sphinxcontrib-websupport==1.2.4
 toml==0.10.2
 tox==3.21.3
-tqdm==4.55.1
+tqdm==4.63.0
 twine==3.3.0
 urllib3==1.26.3
 virtualenv==20.4.2
