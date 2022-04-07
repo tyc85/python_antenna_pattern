@@ -4,7 +4,7 @@ argh==0.26.2
 atomicwrites==1.4.0
 attrs==20.3.0
 Babel==2.9.0
-bleach==3.3.0
+bleach==5.0.0
 bump2version==0.5.11
 certifi==2020.12.5
 chardet==4.0.0
