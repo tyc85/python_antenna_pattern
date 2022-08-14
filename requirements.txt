@@ -1,2 +1,2 @@
 matplotlib==3.3.4
-numpy
+numpy==1.23.2
