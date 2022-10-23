@@ -30,7 +30,15 @@ Generate antenna radiation pattern in polar format using python
 Features
 --------
 
-* TODO
+Simple cli to 
+ * generate pdf and eps file from a planet file
+ * convert individual file or convert entire folder of files
+
+Examples:
+.. code-block:: bash
+   pyap -g -n TEST_ ./python_antenna_pattern/data/LTE-L_1960.0MHz_P1.txt  
+
+
 
 Credits
 -------

@@ -1,3 +1,7 @@
+# PDF/EPS files
+*.pdf
+*.eps
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -103,3 +107,6 @@ ENV/
 
 # IDE settings
 .vscode/
+
+# vim
+*.swp
