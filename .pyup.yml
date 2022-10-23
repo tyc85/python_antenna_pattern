@@ -1,7 +1,8 @@
-Update: all
+Update: insecure
 Search: True
 Pin: True
-Default Branch: dev 
+schedule: "every week"
+Default Branch: main
 Branch pre-fix: pyup-
 Close PRs: True
 Label PRs: False
