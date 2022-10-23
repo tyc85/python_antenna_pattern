@@ -5,7 +5,7 @@ atomicwrites==1.4.0
 attrs==20.3.0
 Babel==2.9.0
 bleach==3.2.1
-bump2version==0.5.11
+bump2version==1.0.1
 certifi==2020.12.5
 chardet==4.0.0
 coverage==4.5.4
