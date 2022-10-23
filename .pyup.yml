@@ -1,9 +1,21 @@
-Update: insecure
-Search: True
-Pin: True
+update: insecure
+search: False 
+pin: True
 schedule: "every week"
 Default Branch: main
-Branch pre-fix: pyup-
-Close PRs: True
-Label PRs: False
-Update hashes: True
+Branch pre-fix: pyup/
+close_prs: True
+#label_prs: False 
+#Update hashes: True
+requirements:
+  - requirements/staging.txt:
+      # update all dependencies and pin them
+      update: all
+      pin: True
+  - requirements/dev.txt:
+      # don't update dependencies, use global 'pin' default
+      update: False
+  - requirements/prod.txt:
+      # update insecure only, pin all
+      update: insecure
+      pin: True
